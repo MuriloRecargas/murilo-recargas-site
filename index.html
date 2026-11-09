@@ -36,6 +36,25 @@
       </div>
     </section>
 
+
+    <section class="featured-partner section" id="nova-parceria" aria-labelledby="tudo-title">
+      <div class="featured-card">
+        <div class="featured-copy">
+          <p class="featured-kicker"><span></span> CHEGOU NOVIDADE · NOVA PARCERIA</p>
+          <h2 id="tudo-title">TUDO <em>TV</em></h2>
+          <p>Tem parceiro novo na MURILO RECARGAS! Conheça o TUDO TV e baixe o aplicativo pelo link oficial do parceiro.</p>
+          <a class="download-apk-button" href="https://baixa.app/tudotvbox" target="_blank" rel="noopener noreferrer">
+            BAIXAR APK <span>↗</span>
+          </a>
+        </div>
+        <div class="featured-mark" aria-hidden="true">
+          <span class="featured-spark">✦</span>
+          <strong>TUDO<br>TV</strong>
+          <small>NOVA PARCERIA</small>
+        </div>
+      </div>
+    </section>
+
     <section class="partners section" id="parceiros">
       <div class="section-heading">
         <p class="eyebrow"><span></span> NOSSA REDE</p>
@@ -63,7 +82,29 @@
           <div class="partner-info"><span class="partner-label">PARCEIRO</span><h3>NovaTV</h3><p>Acesse o site do parceiro.</p></div>
           <a href="https://novatv2027.github.io/nova-tv-downloads/" target="_blank" rel="noopener noreferrer" aria-label="Acessar NovaTV">ACESSAR <span>↗</span></a>
         </article>
+        <article class="partner-card partner-card-new">
+          <div class="partner-icon">TT</div>
+          <div class="partner-info"><span class="partner-label">NOVA PARCERIA</span><h3>TUDO TV</h3><p>Baixe o aplicativo pelo link do parceiro.</p></div>
+          <a href="https://baixa.app/tudotvbox" target="_blank" rel="noopener noreferrer" aria-label="Baixar TUDO TV">BAIXAR <span>↗</span></a>
+        </article>
       </div>
+    </section>
+
+
+    <section class="downloader section" id="downloader">
+      <div class="section-heading">
+        <p class="eyebrow"><span></span> ACESSO RÁPIDO</p>
+        <h2>CÓDIGOS <em>DOWNLOADER</em></h2>
+        <p>Selecione seu parceiro e copie o código para usar no aplicativo Downloader.</p>
+      </div>
+      <div class="downloader-grid">
+        <article class="code-card"><div><span class="code-label">NEXATV</span><h3>NexaTV</h3></div><strong class="downloader-code">9296738</strong><button class="copy-code" type="button" data-code="9296738">COPIAR CÓDIGO</button></article>
+        <article class="code-card"><div><span class="code-label">NEXOCINE</span><h3>NexoCine</h3></div><strong class="downloader-code">8009607</strong><button class="copy-code" type="button" data-code="8009607">COPIAR CÓDIGO</button></article>
+        <article class="code-card"><div><span class="code-label">POTROPLAY</span><h3>PotroPlay</h3></div><strong class="downloader-code">1206743</strong><button class="copy-code" type="button" data-code="1206743">COPIAR CÓDIGO</button></article>
+        <article class="code-card code-card-featured"><div><span class="code-label">NOVA PARCERIA</span><h3>TUDO TV</h3></div><strong class="downloader-code">2605122</strong><button class="copy-code" type="button" data-code="2605122">COPIAR CÓDIGO</button></article>
+        <article class="code-card"><div><span class="code-label">NOVATV</span><h3>NovaTV</h3></div><strong class="downloader-code">3646895</strong><button class="copy-code" type="button" data-code="3646895">COPIAR CÓDIGO</button></article>
+      </div>
+      <p class="downloader-note">Toque em “Copiar código” para copiar o número e colar no Downloader.</p>
     </section>
 
     <section class="contact section" id="contato">
@@ -86,6 +127,37 @@
     <p class="footer-note">Os links direcionam aos sites de cada parceiro.</p>
   </footer>
   <a class="floating-whatsapp" href="https://wa.me/5511914673065" target="_blank" rel="noopener noreferrer" aria-label="Conversar pelo WhatsApp">✆</a>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('.copy-code').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const code = button.dataset.code;
+        const originalText = 'COPIAR CÓDIGO';
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(code);
+          } else {
+            const field = document.createElement('textarea');
+            field.value = code;
+            field.style.position = 'fixed';
+            field.style.opacity = '0';
+            document.body.appendChild(field);
+            field.select();
+            document.execCommand('copy');
+            field.remove();
+          }
+          button.textContent = 'COPIADO!';
+          button.classList.add('copied');
+        } catch (error) {
+          button.textContent = 'COPIE: ' + code;
+        }
+        window.setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2200);
+      });
+    });
+  </script>
 </body>
 </html>
